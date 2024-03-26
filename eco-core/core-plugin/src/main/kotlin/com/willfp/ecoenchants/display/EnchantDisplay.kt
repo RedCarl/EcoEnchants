@@ -11,6 +11,7 @@ import com.willfp.ecoenchants.commands.CommandToggleDescriptions.Companion.seesE
 import com.willfp.ecoenchants.display.EnchantSorter.sortForDisplay
 import com.willfp.ecoenchants.enchant.EcoEnchant
 import com.willfp.ecoenchants.enchant.wrap
+import com.willfp.ecoenchants.mechanics.infiniteIfNegative
 import com.willfp.ecoenchants.target.EnchantmentTargets.isEnchantable
 import com.willfp.libreforge.ItemProvidedHolder
 import org.bukkit.Material
@@ -55,6 +56,8 @@ class EnchantDisplay(private val plugin: EcoEnchantsPlugin) : DisplayModule(plug
 
         val lore = fast.lore
         val enchantLore = mutableListOf<String>()
+        val slot = mutableListOf<String>()
+        val slotInfo = mutableListOf<String>()
 
         // Get enchants mapped to EcoEnchantLike
         val unsorted = fast.getEnchants(true)
@@ -103,7 +106,11 @@ class EnchantDisplay(private val plugin: EcoEnchantsPlugin) : DisplayModule(plug
             for ((displayable, formattedName) in formattedNames) {
                 val (enchant, level) = displayable
 
-                enchantLore.add(Display.PREFIX + formattedName)
+                if (itemStack.type == Material.ENCHANTED_BOOK) {
+                    enchantLore.add(Display.PREFIX + "§x§a§5§a§c§b§8$formattedName")
+                }else{
+                    enchantLore.add(Display.PREFIX + "§x§f§1§9§c§0§b+ " +formattedName)
+                }
 
                 if (shouldDescribe) {
                     enchantLore.addAll(enchant.getFormattedDescription(level, player)
@@ -115,9 +122,22 @@ class EnchantDisplay(private val plugin: EcoEnchantsPlugin) : DisplayModule(plug
         fast.addItemFlags(ItemFlag.HIDE_ENCHANTS)
         if (itemStack.type == Material.ENCHANTED_BOOK) {
             fast.addItemFlags(ItemFlag.HIDE_POTION_EFFECTS)
+        }else {
+            val name = (itemStack.type.name).split("_")[0].lowercase();
+            var amount = plugin.configYml.getInt("anvil.enchant-limit.$name").infiniteIfNegative()
+
+            slotInfo.add(Display.PREFIX + "")
+            slotInfo.add(Display.PREFIX + "§f附魔槽位: §x§f§1§9§c§0§b(${enchants.size}/$amount)")
+            slotInfo.add(Display.PREFIX + "")
+
+            while (amount-enchants.size>0){
+                slot.add(Display.PREFIX + "§x§a§5§a§c§b§8+ 附魔槽位")
+                amount--;
+            }
         }
 
-        fast.lore = enchantLore + lore + notMetLines
+
+        fast.lore = slotInfo + enchantLore + slot + lore + notMetLines
     }
 
     override fun revert(itemStack: ItemStack) {

@@ -69,9 +69,12 @@ interface EcoEnchantLike {
             return false
         }
 
-        if (item.fast().getEnchants(true).size >= plugin.configYml.getInt("anvil.enchant-limit").infiniteIfNegative()) {
+        val name = (item.type.name).split("_")[0].lowercase();
+
+        if (item.fast().getEnchants(true).size >= plugin.configYml.getInt("anvil.enchant-limit.$name").infiniteIfNegative()) {
             return false
         }
+
 
         if (item.type == Material.ENCHANTED_BOOK) {
             return true

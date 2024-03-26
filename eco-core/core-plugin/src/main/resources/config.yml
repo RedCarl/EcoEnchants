@@ -27,7 +27,22 @@ loot:
 # Options for merging items in an anvil
 anvil:
   cost-exponent: 0.95 # The exponent for each enchant level to prevent constant "Too Expensive!" problems
-  enchant-limit: -1 # The limit for the amount of enchantments on an item (-1 to disable)
+  enchant-limit:
+    shield: 3
+    trident: 5
+    chainmail: 4
+    crossbow: 5
+    turtle: 3
+    fishing: 4
+    bow: 5
+    leather: 1
+    stone: 3
+    netherite: 7
+    diamond: 5
+    elytra: 4
+    wooden: 1
+    golden: 3
+    iron: 4
   use-rework-penalty: true # If the rework penalty should be applied
   max-repair-cost: 40 # Override the maximum repair cost (-1 to make it infinite). "Too Expensive" message cannot be removed, but this is purely visual.
 

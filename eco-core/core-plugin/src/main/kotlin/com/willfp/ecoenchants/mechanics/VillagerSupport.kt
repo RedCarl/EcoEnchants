@@ -62,7 +62,9 @@ class VillagerSupport(
                 continue
             }
 
-            if (enchants.size > plugin.configYml.getInt("anvil.enchant-limit").infiniteIfNegative()) {
+            val name = (result.type.name).split("_")[0].lowercase();
+
+            if (enchants.size > plugin.configYml.getInt("anvil.enchant-limit.$name").infiniteIfNegative()) {
                 break
             }
 

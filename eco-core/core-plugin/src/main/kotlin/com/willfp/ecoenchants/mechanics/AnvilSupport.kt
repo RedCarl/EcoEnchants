@@ -226,7 +226,10 @@ class AnvilSupport(
             } else {
                 // Running .wrap() to use EcoEnchantLike canEnchantItem logic
                 if (enchant.wrap().canEnchantItem(left)) {
-                    if (outEnchants.size < plugin.configYml.getInt("anvil.enchant-limit").infiniteIfNegative()) {
+
+                    val name = (left.type.name).split("_")[0].lowercase();
+
+                    if (outEnchants.size < plugin.configYml.getInt("anvil.enchant-limit.$name").infiniteIfNegative()) {
                         outEnchants[enchant] = level
                     }
                 }
