@@ -126,13 +126,15 @@ class EnchantDisplay(private val plugin: EcoEnchantsPlugin) : DisplayModule(plug
             val name = (itemStack.type.name).split("_")[0].lowercase();
             var amount = plugin.configYml.getInt("anvil.enchant-limit.$name").infiniteIfNegative()
 
-            slotInfo.add(Display.PREFIX + "")
-            slotInfo.add(Display.PREFIX + "§f附魔槽位: §x§f§1§9§c§0§b(${enchants.size}/$amount)")
-            slotInfo.add(Display.PREFIX + "")
+            if (amount>0){
+                slotInfo.add(Display.PREFIX + "")
+                slotInfo.add(Display.PREFIX + "§f附魔槽位: §x§f§1§9§c§0§b(${enchants.size}/$amount)")
+                slotInfo.add(Display.PREFIX + "")
 
-            while (amount-enchants.size>0){
-                slot.add(Display.PREFIX + "§x§a§5§a§c§b§8+ 附魔槽位")
-                amount--;
+                while (amount-enchants.size>0){
+                    slot.add(Display.PREFIX + "§x§a§5§a§c§b§8+ 附魔槽位")
+                    amount--;
+                }
             }
         }
 
