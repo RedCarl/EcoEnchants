@@ -61,7 +61,7 @@ class LootSupport(
                 continue
             }
 
-            val name = (item.type.name).split("_")[0].lowercase();
+            val name = item.type.name.lowercase();
 
             if (enchants.size > plugin.configYml.getInt("anvil.enchant-limit.$name").infiniteIfNegative()) {
                 break

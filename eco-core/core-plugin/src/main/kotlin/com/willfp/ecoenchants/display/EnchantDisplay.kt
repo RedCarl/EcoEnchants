@@ -120,10 +120,12 @@ class EnchantDisplay(private val plugin: EcoEnchantsPlugin) : DisplayModule(plug
         }
 
         fast.addItemFlags(ItemFlag.HIDE_ENCHANTS)
+        fast.addItemFlags(ItemFlag.HIDE_ATTRIBUTES)
+        fast.addItemFlags(ItemFlag.HIDE_UNBREAKABLE)
         if (itemStack.type == Material.ENCHANTED_BOOK) {
             fast.addItemFlags(ItemFlag.HIDE_POTION_EFFECTS)
         }else {
-            val name = (itemStack.type.name).split("_")[0].lowercase();
+            val name = itemStack.type.name.lowercase();
             var amount = plugin.configYml.getInt("anvil.enchant-limit.$name").infiniteIfNegative()
             val key = mutableListOf<String>()
             for (i in plugin.configYml.getKeys(true)){

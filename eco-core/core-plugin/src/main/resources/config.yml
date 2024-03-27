@@ -30,19 +30,67 @@ anvil:
   enchant-limit:
     shield: 3
     trident: 5
-    chainmail: 4
     crossbow: 5
-    turtle: 3
-    fishing: 4
+    turtle_helmet: 3
+    fishing_rod: 4
     bow: 5
-    leather: 1
-    stone: 3
-    netherite: 7
-    diamond: 5
+    shears: 2
+    flint_and_steel: 1
+    leather_helmet: 1
+    leather_chestplate: 1
+    leather_leggings: 1
+    leather_boots: 1
     elytra: 4
-    wooden: 1
-    golden: 3
-    iron: 4
+    wooden_sword: 1
+    wooden_axe: 1
+    wooden_pickaxe: 1
+    wooden_hoe: 1
+    wooden_shovel: 1
+    stone_sword: 3
+    stone_axe: 3
+    stone_pickaxe: 3
+    stone_hoe: 3
+    stone_shovel: 3
+    chainmail_helmet: 4
+    chainmail_chestplate: 4
+    chainmail_leggings: 4
+    chainmail_boots: 4
+    iron_sword: 4
+    iron_axe: 4
+    iron_pickaxe: 4
+    iron_hoe: 4
+    iron_shovel: 4
+    iron_helmet: 4
+    iron_chestplate: 4
+    iron_leggings: 4
+    iron_boots: 4
+    golden_sword: 4
+    golden_axe: 4
+    golden_pickaxe: 4
+    golden_hoe: 4
+    golden_shovel: 4
+    golden_helmet: 4
+    golden_chestplate: 4
+    golden_leggings: 4
+    golden_boots: 4
+    diamond_sword: 5
+    diamond_axe: 5
+    diamond_pickaxe: 5
+    diamond_hoe: 5
+    diamond_shovel: 5
+    diamond_helmet: 5
+    diamond_chestplate: 5
+    diamond_leggings: 5
+    diamond_boots: 5
+    netherite_sword: 7
+    netherite_axe: 7
+    netherite_pickaxe: 7
+    netherite_hoe: 7
+    netherite_shovel: 7
+    netherite_helmet: 7
+    netherite_chestplate: 7
+    netherite_leggings: 7
+    netherite_boots: 7
   use-rework-penalty: true # If the rework penalty should be applied
   max-repair-cost: 40 # Override the maximum repair cost (-1 to make it infinite). "Too Expensive" message cannot be removed, but this is purely visual.
 

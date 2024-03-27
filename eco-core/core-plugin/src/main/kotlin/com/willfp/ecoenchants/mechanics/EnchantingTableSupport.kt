@@ -110,9 +110,8 @@ class EnchantingTableSupport(
                 break
             }
 
-            val name = (item.type.name).split("_")[0].lowercase();
+            val name = item.type.name.lowercase();
 
-            println(name + " " + toAdd.size+" "+ plugin.configYml.getInt("anvil.enchant-limit.$name").infiniteIfNegative())
             if (toAdd.size > plugin.configYml.getInt("anvil.enchant-limit.$name").infiniteIfNegative()) {
                 break
             }
